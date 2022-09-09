@@ -24,6 +24,9 @@ export const AddCardDiv = styled.div`
   width: 80%;
   cursor: pointer;
   color: gray;
+  :hover {
+    color: black;
+  }
 `;
 
 export const TextAreaAddCard = styled.textarea`
