@@ -1,9 +1,18 @@
+import { useState } from "react";
 import { AddCardDiv } from "../../styles/all_todo";
 
 const AddCard: React.FC = () => {
-  const toggleShowAddNewCart: boolean = false;
+  const [toggleShowAddNewCart, setToggleShowAddNewCart] = useState(true);
 
-  return <AddCardDiv>Add new card</AddCardDiv>;
+  if (toggleShowAddNewCart)
+    return (
+      <AddCardDiv
+        onClick={() => setToggleShowAddNewCart(!toggleShowAddNewCart)}
+      >
+        Add new card
+      </AddCardDiv>
+    );
+  else return <p>hola</p>;
 };
 
 export default AddCard;
