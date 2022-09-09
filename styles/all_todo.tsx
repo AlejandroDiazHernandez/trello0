@@ -11,6 +11,7 @@ export const TextArea = styled.textarea`
   height: 2rem;
   width: 80%;
   border-radius: 5px;
+  font-weight: bold;
   background-color: #c3b6b6;
   color: black;
   cursor: pointer;
@@ -23,4 +24,8 @@ export const AddCardDiv = styled.div`
   width: 80%;
   cursor: pointer;
   color: gray;
+`;
+
+export const TextAreaAddCard = styled.textarea`
+  width: 100%;
 `;
