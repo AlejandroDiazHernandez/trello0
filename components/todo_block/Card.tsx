@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { GetServerSideProps } from "next";
 
 interface CardProps {
   cardItems: CardItems[];
@@ -9,17 +8,7 @@ interface CardItems {
   title: string;
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  const res = await fetch("/api/cardApi");
-  const cardItems: CardItems[] = await res.json();
-
-  return {
-    props: { cardItems },
-  };
-};
-
 const Card: React.FC<CardProps> = ({ cardItems }) => {
-  console.log(cardItems);
   return (
     <ul>
       {cardItems?.map((card, index) => (

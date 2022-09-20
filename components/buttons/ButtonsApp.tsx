@@ -4,10 +4,12 @@ type ButtonsProps = {
   children?: React.ReactNode;
   secondary?: boolean;
   handleCloseAddNewCart?: () => void;
+  handlePostNewCard?: () => void;
 };
 
 const ButtonsApp: React.FC<ButtonsProps> = (props) => {
-  const { children, secondary, handleCloseAddNewCart } = props;
+  const { children, secondary, handleCloseAddNewCart, handlePostNewCard } =
+    props;
 
   if (secondary)
     return (
@@ -15,7 +17,12 @@ const ButtonsApp: React.FC<ButtonsProps> = (props) => {
         {children}
       </SecondaryButton>
     );
-  else return <MainButton type="button">{children}</MainButton>;
+  else
+    return (
+      <MainButton type="button" onClick={handlePostNewCard}>
+        {children}
+      </MainButton>
+    );
 };
 
 export default ButtonsApp;
