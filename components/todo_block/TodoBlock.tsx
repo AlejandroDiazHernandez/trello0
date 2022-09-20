@@ -9,7 +9,6 @@ interface CardItems {
 
 const TodoBlock: React.FC = () => {
   const [cardItems, setCardItems] = useState<CardItems[]>([]);
-  const [reload, setReload] = useState(false);
 
   useEffect(() => {
     const fetchCardItems = async () => {
@@ -18,13 +17,26 @@ const TodoBlock: React.FC = () => {
       setCardItems(cardItemsRes);
     };
     fetchCardItems();
-  }, [reload]);
+  }, []);
+
+  const handlePostNewCard = async (enteredCard: string) => {
+    const newCardItem = await fetch("/api/cardApi", {
+      method: "POST",
+      body: JSON.stringify({
+        card: enteredCard,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then((response) => response.json());
+    setCardItems([...cardItems, newCardItem]);
+  };
 
   return (
     <TodoBlockDiv>
       <TextArea placeholder="Add title" />
       <Card cardItems={cardItems} />
-      <AddCard reload={reload} setReload={setReload} />
+      <AddCard handlePostNewCard={handlePostNewCard} />
     </TodoBlockDiv>
   );
 };

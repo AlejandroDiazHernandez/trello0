@@ -11,7 +11,7 @@ const cardItems: CardItem[] = [
 
 export default function handler(
   req: NextApiRequest,
-  res: NextApiResponse<CardItem[]>
+  res: NextApiResponse<CardItem[] | CardItem>
 ) {
   if (req.method === "POST") {
     const { card }: { card: string } = req.body;
@@ -20,7 +20,7 @@ export default function handler(
       alert("Debes añadir un texto");
     }
     cardItems.push({ title: newCard });
-    res.status(221).json(cardItems);
+    res.status(221).json({ title: newCard });
   } else {
     res.status(201).json(cardItems);
   }
