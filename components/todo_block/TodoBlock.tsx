@@ -1,5 +1,7 @@
+import styled from "@emotion/styled";
 import { useEffect, useState } from "react";
 import { TodoBlockDiv, TextArea } from "../../styles/all_todo";
+import AddNewTodoBlock from "../add_new_todo_block/AddNewTodoBlock";
 import AddCard from "./AddCard";
 import Card from "./Card";
 
@@ -33,12 +35,24 @@ const TodoBlock: React.FC = () => {
   };
 
   return (
-    <TodoBlockDiv>
-      <TextArea placeholder="Add title" />
-      <Card cardItems={cardItems} />
-      <AddCard handlePostNewCard={handlePostNewCard} />
-    </TodoBlockDiv>
+    <TodosSection>
+      <TodoBlockDiv>
+        <TextArea placeholder="Add title" />
+        <Card cardItems={cardItems} />
+        <AddCard handlePostNewCard={handlePostNewCard} />
+      </TodoBlockDiv>
+      <div>
+        <AddNewTodoBlock />
+      </div>
+    </TodosSection>
   );
 };
 
 export default TodoBlock;
+
+const TodosSection = styled.section`
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 30px;
+`;
